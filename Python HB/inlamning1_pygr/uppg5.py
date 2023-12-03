@@ -1,7 +1,6 @@
 import csv
 import matplotlib.pyplot as plt
 
-# Tar ett filnamn som argument och returnerar en lista med innehållet
 def read_file(file_name):
     data = []
     with open(file_name, 'r', newline='') as file:
@@ -10,108 +9,114 @@ def read_file(file_name):
             data.append(row)
     return data
 
-# Läs in filerna med elpriser
-lghpriser = 'lghpriser.csv'
-villapriser = 'villapriser.csv'
+# Funktion for att hitta minsta varde
+def find_min(prices):
+    min_price = float('inf')
+    for price in prices:
+        if price < min_price:
+            min_price = price
+    return min_price
 
-lghData = read_file(lghpriser)
-villaData = read_file(villapriser)
+# Fuktion for att hitta max varde
+def find_max(prices):
+    max_price = float('-inf')
+    for price in prices:
+        if price > max_price:
+            max_price = price
+    return max_price
 
-def categorize_data(prices, category):
-    category_data = {
-        'lagenhetskund': [],
-        'villakund': []
-    }
-    for entry in prices:
-        if entry[0].lower() == category.lower():
-            category_data[entry[0].lower()].append(entry[1:])
+# Funktion for att hitta medelvarde
+def find_mean(prices):
+    total = sum(prices)
+    mean = total / len(prices)
+    return mean
 
-    return category_data
+# Funktion for att hitta medianvarde
+def find_median(prices):
+    sorted_prices = sorted(prices)
+    n = len(sorted_prices)
+    mid = n // 2
+    if n % 2 == 0:
+        median = (sorted_prices[mid - 1] + sorted_prices[mid]) / 2
+    else:
+        median = sorted_prices[mid]
+    return median
 
-# Funktion för att beräkna min, max och medelvärde av elpriser för ett prisavtal och en kundtyp
-def calculate_stats(prices, agreement):
-    year_index = 0
-    pris_index = 0
-    
-    # Användare väljer prisavtal
-    if agreement == "rörligt":
-        pris_index = [4, 7, 10, 13]  # Indexter för rörligt pris i CSV-filen
-    elif agreement == "fast 1 år":
-        pris_index = [3, 6, 9, 12]  # Indexter för fast 1 år i CSV-filen
-    elif agreement == "fast 3 år":
-        pris_index = [2, 5, 8, 11]  # Indexter för fast 3 år i CSV-filen
+# Extrahera kolumner startar m SE och namnger listor
+def extract_SE_columns(file_name):
+    data = read_file(file_name)
+    se_columns = {}
+    # Skapar dictionary med SE-kolumner
+    for idx, column in enumerate(data[0]):
+        if column.startswith('SE'):
+            se_columns[column] = [float(row[idx]) for row in data[1:]]
+    return se_columns
 
-    years = list(range(2018, 2024))
-    prices_per_year = [[] for _ in range(len(years))]
+def print_header(prisavtal):
+    print ("=" * 80, "\n\n")
+    print(f"              Lägsta- högsta- och medelvärde av elpriserna")
+    print(f"              under tidsperioden 2018-2023 for {prisavtal}\n\n")
+    print("{:<12}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}".format(
+        "Prisomr.", "lägsta", "år", "mån", "högsta",
+        "år", "mån", "medel"))
+    print("-" * 80)
 
-    for i, year in enumerate(years):
-        # Filtrerar data för det givna året och priset för det givna prisavtalet
-        filtered_prices = [
-            float(entry[pris_index[i % 4]]) for entry in prices if int(entry[year_index]) == year
-        ]
-        prices_per_year[i].extend(filtered_prices)
+# Filtrerar statistik for SE kolumner och printar output
+def filter_and_print_statistics(se_columns, prisavtal, data):
+    for se_type in range(1, 5):
+        column_name = f"SE{se_type}-{prisavtal}"
+        if column_name in se_columns:
+            min_value = find_min(se_columns[column_name])
+            max_value = find_max(se_columns[column_name])
+            mean_value = find_mean(se_columns[column_name])
+            
+            # Extrahera row index min, max, medel i dataset
+            min_row_index = se_columns[column_name].index(min_value) + 1  # Skippa header row
+            max_row_index = se_columns[column_name].index(max_value) + 1 
+            
+            # Hitta ar och manad
+            min_year = data[min_row_index][0]
+            min_month = data[min_row_index][1]
+            max_year = data[max_row_index][0]
+            max_month = data[max_row_index][1]
 
-    # Beräkna min, max och medelvärde för varje år
-    min_prices = [min(prices) for prices in prices_per_year]
-    max_prices = [max(prices) for prices in prices_per_year]
-    avg_prices = [sum(prices) / len(prices) for prices in prices_per_year]
+            print("{:<12}{:<10.2f}{:<10}{:<10}{:<10.2f}{:<10}{:<10}{:<10.2f}".format(
+                f"SE{se_type}", min_value, min_year, min_month[:3], 
+                max_value, max_year, max_month[:3], mean_value))
 
-    return min_prices, max_prices, avg_prices
+lghpriser_file = 'lghpriser.csv'
+villapriser_file = 'villapriser.csv'
 
-# Läs in filerna med elpriser
-lghpriser = 'lghpriser.csv'
-villapriser = 'villapriser.csv'
+lgh_SE_columns = extract_SE_columns(lghpriser_file)
+villa_SE_columns = extract_SE_columns(villapriser_file)
 
-lghData = read_file(lghpriser)
-villaData = read_file(villapriser)
+lghData = read_file(lghpriser_file)
+villaData = read_file(villapriser_file)
 
-prisavtal_input = input("Ange prisavtal (R, F1, F3): ")
-prisavtal_map = {
-    "R": "rörligt",
-    "F1": "fast 1 år",
-    "F3": "fast 3 år"
-}
-if prisavtal_input.upper() in prisavtal_map:
-    prisavtal = prisavtal_map[prisavtal_input.upper()]
+# Get user input for prisavtal
+prisavtal_input = input("Ange prisavtal (R, F1, F3): ").upper()
+
+# Check user input and print statistics for villaData and lghData accordingly
+if prisavtal_input == "R":
+    print_header("rörligt avtal")
+    print("\nKategori lägenhetskund:")
+    filter_and_print_statistics(lgh_SE_columns, "Rorligt pris", lghData)
+    print("\nKategori villakund:")
+    filter_and_print_statistics(villa_SE_columns, "Rorligt pris", villaData)
+    print ("=" * 80)
+elif prisavtal_input == "F1":
+    print_header("fast pris 1 år")
+    print("\nKategori lägenhetskund:")
+    filter_and_print_statistics(lgh_SE_columns, "Fast pris 1 ar", lghData)
+    print("\nKategori villakund:")
+    filter_and_print_statistics(villa_SE_columns, "Fast pris 1 ar", villaData)
+    print ("=" * 80)
+elif prisavtal_input == "F3":
+    print_header("fast pris 3 år")
+    print("\nKategori lägenhetskund:")
+    filter_and_print_statistics(lgh_SE_columns, "Fast pris 3 ar", lghData)
+    print("\nKategori villakund:")
+    filter_and_print_statistics(villa_SE_columns, "Fast pris 3 ar", villaData)
+    print ("=" * 80)
 else:
-    print("Ogiltigt prisavtal. Ange 'R', 'F1' eller 'F3'.")
-    exit()
-
-
-
-# Beräkna statistik för lägenhetskunder och villakunder
-min_lgh, max_lgh, avg_lgh = calculate_stats(lghData[1:], prisavtal)
-min_villa, max_villa, avg_villa = calculate_stats(villaData[1:], prisavtal)
-
-# Presentera tabell
-print(f"{'År':<6}{'Lägsta':<10}{'Högsta':<10}{'Medel':<10}")
-print("=" * 36)
-for i, year in enumerate(range(2018, 2024)):
-    print(f"{year:<6}{min_lgh[i]:<10.2f}{max_lgh[i]:<10.2f}{avg_lgh[i]:<10.2f}")
-
-# Skapa punktdiagram för lägenhetskunder och villakunder
-plt.figure(figsize=(10, 5))
-
-# Diagram för lägenhetskunder
-plt.subplot(1, 2, 1)
-plt.scatter(range(1, 7), min_lgh, label='Lägsta')
-plt.scatter(range(1, 7), max_lgh, label='Högsta')
-plt.scatter(range(1, 7), avg_lgh, label='Medel')
-plt.xlabel('Prisområde')
-plt.ylabel('Pris (öre/kWh)')
-plt.title('Lägenhetskund')
-plt.legend()
-
-# Diagram för villakunder
-plt.subplot(1, 2, 2)
-plt.scatter(range(1, 7), min_villa, label='Lägsta')
-plt.scatter(range(1, 7), max_villa, label='Högsta')
-plt.scatter(range(1, 7), avg_villa, label='Medel')
-plt.xlabel('Prisområde')
-plt.ylabel('Pris (öre/kWh)')
-plt.title('Villakund')
-plt.legend()
-
-plt.tight_layout()
-plt.show()
-
+    print("Ogiltigt format. Var god ange R, F1, eller F3.")
