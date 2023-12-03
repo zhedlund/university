@@ -62,7 +62,7 @@ def print_header(prisavtal):
     print("-" * 80)
 
 # Filtrerar statistik for SE kolumner och printar output
-def filter_and_print_statistics(se_columns, prisavtal, data):
+def filter_and_print_statistics(se_columns, prisavtal, data, statistics_list):
     for se_type in range(1, 5):
         column_name = f"SE{se_type}-{prisavtal}"
         if column_name in se_columns:
@@ -76,13 +76,44 @@ def filter_and_print_statistics(se_columns, prisavtal, data):
             
             # Hitta ar och manad
             min_year = data[min_row_index][0]
-            min_month = data[min_row_index][1]
+            min_month = data[min_row_index][1][:3]
             max_year = data[max_row_index][0]
-            max_month = data[max_row_index][1]
+            max_month = data[max_row_index][1][:3]
 
+            # Lagg till statistik i lista for att anvanda till diagrammen
+            statistics_list.append({
+                'SE_Type': f"SE{se_type}",
+                'Min_Value': min_value,
+                'Max_Value': max_value,
+                'Mean_Value': mean_value
+            })
+            # Printar tabellen
             print("{:<12}{:<10.2f}{:<10}{:<10}{:<10.2f}{:<10}{:<10}{:<10.2f}".format(
-                f"SE{se_type}", min_value, min_year, min_month[:3], 
-                max_value, max_year, max_month[:3], mean_value))
+                f"SE{se_type}", min_value, min_year, min_month, 
+                max_value, max_year, max_month, mean_value))
+
+# Meta-funktion for att fa diagrammen bredvid varandra
+def create_side_by_side_scatter_plots(lgh_statistics, villa_statistics, prisavtal):
+    def create_scatter_plot(ax, statistics, customer_type):
+        SE_types = [entry['SE_Type'] for entry in statistics]
+        min_values = [entry['Min_Value'] for entry in statistics]
+        max_values = [entry['Max_Value'] for entry in statistics]
+        mean_values = [entry['Mean_Value'] for entry in statistics]
+
+        ax.scatter(SE_types, min_values, label='lägsta elpris', marker='o')
+        ax.scatter(SE_types, max_values, label='högsta elpris', marker='o')
+        ax.scatter(SE_types, mean_values, label='medelvärde', marker='o')
+        ax.set_title(f"Elpriser\nLägsta-, högsta- och medelvärde under tidsperioden 2018-2023\nKategori {customer_type} - {prisavtal}")
+        ax.set_xlabel('SE Types')
+        ax.set_ylabel('Price (öre/kWh)')
+        ax.legend()
+        ax.grid(True)
+
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+    create_scatter_plot(ax1, lgh_statistics, 'lägenhetskund')  
+    create_scatter_plot(ax2, villa_statistics, 'villakund')
+    plt.tight_layout()
+    plt.show()
 
 lghpriser_file = 'lghpriser.csv'
 villapriser_file = 'villapriser.csv'
@@ -93,30 +124,42 @@ villa_SE_columns = extract_SE_columns(villapriser_file)
 lghData = read_file(lghpriser_file)
 villaData = read_file(villapriser_file)
 
-# Get user input for prisavtal
-prisavtal_input = input("Ange prisavtal (R, F1, F3): ").upper()
+lgh_statistics = []
+villa_statistics = []
 
-# Check user input and print statistics for villaData and lghData accordingly
+prisavtal_input = input("Ange prisavtal (R, F1, F3): ").upper()
+if prisavtal_input in ["R", "F1", "F3"]:
+    if prisavtal_input == "R":
+        prisavtal_text = "rörligt avtal"
+    elif prisavtal_input == "F1":
+        prisavtal_text = "fast pris 1 år"
+    else:
+        prisavtal_text = "fast pris 3 år"
+
+# Kollar user input och printar statistik utifran det
 if prisavtal_input == "R":
     print_header("rörligt avtal")
     print("\nKategori lägenhetskund:")
-    filter_and_print_statistics(lgh_SE_columns, "Rorligt pris", lghData)
+    filter_and_print_statistics(lgh_SE_columns, "Rorligt pris", lghData, lgh_statistics)
     print("\nKategori villakund:")
-    filter_and_print_statistics(villa_SE_columns, "Rorligt pris", villaData)
+    filter_and_print_statistics(villa_SE_columns, "Rorligt pris", villaData, villa_statistics)
     print ("=" * 80)
 elif prisavtal_input == "F1":
     print_header("fast pris 1 år")
     print("\nKategori lägenhetskund:")
-    filter_and_print_statistics(lgh_SE_columns, "Fast pris 1 ar", lghData)
+    filter_and_print_statistics(lgh_SE_columns, "Fast pris 1 ar", lghData, lgh_statistics)
     print("\nKategori villakund:")
-    filter_and_print_statistics(villa_SE_columns, "Fast pris 1 ar", villaData)
+    filter_and_print_statistics(villa_SE_columns, "Fast pris 1 ar", villaData, villa_statistics)
     print ("=" * 80)
 elif prisavtal_input == "F3":
     print_header("fast pris 3 år")
     print("\nKategori lägenhetskund:")
-    filter_and_print_statistics(lgh_SE_columns, "Fast pris 3 ar", lghData)
+    filter_and_print_statistics(lgh_SE_columns, "Fast pris 3 ar", lghData, lgh_statistics)
     print("\nKategori villakund:")
-    filter_and_print_statistics(villa_SE_columns, "Fast pris 3 ar", villaData)
+    filter_and_print_statistics(villa_SE_columns, "Fast pris 3 ar", villaData, villa_statistics)
     print ("=" * 80)
 else:
     print("Ogiltigt format. Var god ange R, F1, eller F3.")
+    
+# Skapar diagram
+create_side_by_side_scatter_plots(lgh_statistics, villa_statistics, prisavtal_text)
