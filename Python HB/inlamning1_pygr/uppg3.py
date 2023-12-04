@@ -31,6 +31,13 @@ def find_mean(prices):
     mean = total / len(prices)
     return mean
 
+# Läs in filerna och skapa listor
+lghpriser = 'lghpriser.csv'
+villapriser = 'villapriser.csv'
+
+lghData = read_file(lghpriser)
+villaData = read_file(villapriser)
+
 # Funktion for att hitta medianvarde
 def find_median(prices):
     sorted_prices = sorted(prices)
@@ -42,14 +49,7 @@ def find_median(prices):
         median = sorted_prices[mid]
     return median
 
-# Läs in filerna och skapa listor
-lghpriser = 'lghpriser.csv'
-villapriser = 'villapriser.csv'
-
-lghData = read_file(lghpriser)
-villaData = read_file(villapriser)
-
-# Funktion som nalyserar priser och skapar tabell
+# Funktion som nalyserar priser, skapar tabell och diagram
 def analyze_prices(prices, category, year):
     year_index = 0
     month_index = 1
@@ -125,13 +125,15 @@ def analyze_prices(prices, category, year):
     bar_positions_max = [pos + bar_width for pos in bar_positions_min]
     bar_positions_mean = [pos + 2 * bar_width for pos in bar_positions_min]
     bar_positions_median = [pos + 3 * bar_width for pos in bar_positions_min]
-
+    
+    plt.figure(figsize=(13, 7))
     plt.subplot(1, 2, 1)
     plt.bar(bar_positions_min, min_variable_prices, width=bar_width, label='rörligt min')
     plt.bar(bar_positions_max, max_variable_prices, width=bar_width, label='rörligt max')
     plt.bar(bar_positions_mean, mean_variable_prices, width=bar_width, label='rörligt medel')
     plt.bar(bar_positions_median, median_variable_prices, width=bar_width, label='rörligt median')
     plt.xticks(bar_positions_min, prisomraden)
+    plt.xticks(rotation=90)
     plt.title(f'Elpriser rörligt för {category} i prisområden SE1-SE4 år {year}')
     plt.xlabel('prisområden')
     plt.ylabel('pris (öre/kWh)')
@@ -149,6 +151,7 @@ def analyze_prices(prices, category, year):
     plt.bar(bar_positions_mean, mean_fixed_3year_prices, width=bar_width, label='fast 3 år - medel')
     plt.bar(bar_positions_median, median_fixed_3year_prices, width=bar_width, label='fast 3 år - median')
     plt.xticks(bar_positions_min, prisomraden)
+    plt.xticks(rotation=90)
     plt.title(f'Elpriser fast 3 år för {category} i prisområden SE1-SE4 år {year}')
     plt.xlabel('prisområden')
     plt.ylabel('pris (öre/kWh)')

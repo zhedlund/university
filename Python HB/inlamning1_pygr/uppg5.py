@@ -9,6 +9,12 @@ def read_file(file_name):
             data.append(row)
     return data
 
+lghpriser = 'lghpriser.csv'
+villapriser = 'villapriser.csv'
+
+lghData = read_file(lghpriser)
+villaData = read_file(villapriser)
+
 # Funktion for att hitta minsta varde
 def find_min(prices):
     min_price = float('inf')
@@ -31,17 +37,6 @@ def find_mean(prices):
     mean = total / len(prices)
     return mean
 
-# Funktion for att hitta medianvarde
-def find_median(prices):
-    sorted_prices = sorted(prices)
-    n = len(sorted_prices)
-    mid = n // 2
-    if n % 2 == 0:
-        median = (sorted_prices[mid - 1] + sorted_prices[mid]) / 2
-    else:
-        median = sorted_prices[mid]
-    return median
-
 # Extrahera kolumner startar m SE och namnger listor
 def extract_SE_columns(file_name):
     data = read_file(file_name)
@@ -61,7 +56,7 @@ def print_header(prisavtal):
         "år", "mån", "medel"))
     print("-" * 80)
 
-# Filtrerar statistik for SE kolumner och printar output
+# Filtrerar statistik for SE kolumner och printar output samt lagger till varden i listor
 def filter_and_print_statistics(se_columns, prisavtal, data, statistics_list):
     for se_type in range(1, 5):
         column_name = f"SE{se_type}-{prisavtal}"
@@ -80,7 +75,7 @@ def filter_and_print_statistics(se_columns, prisavtal, data, statistics_list):
             max_year = data[max_row_index][0]
             max_month = data[max_row_index][1][:3]
 
-            # Lagg till statistik i lista for att anvanda till diagrammen
+            # Lagger till dictionary med key-value pairs till lista, for att anvanda till diagrammen
             statistics_list.append({
                 'SE_Type': f"SE{se_type}",
                 'Min_Value': min_value,
@@ -104,30 +99,29 @@ def create_side_by_side_scatter_plots(lgh_statistics, villa_statistics, prisavta
         ax.scatter(SE_types, max_values, label='högsta elpris', marker='o')
         ax.scatter(SE_types, mean_values, label='medelvärde', marker='o')
         ax.set_title(f"Elpriser\nLägsta-, högsta- och medelvärde under tidsperioden 2018-2023\nKategori {customer_type} - {prisavtal}")
-        ax.set_xlabel('SE Types')
-        ax.set_ylabel('Price (öre/kWh)')
+        ax.set_xlabel('prisområden')
+        ax.set_ylabel('pris (öre/kWh)')
         ax.legend()
         ax.grid(True)
+        ax.set_xticks(range(len(SE_types)))
+        ax.set_xticklabels(SE_types, rotation=90)
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
-    create_scatter_plot(ax1, lgh_statistics, 'lägenhetskund')  
+    create_scatter_plot(ax1, lgh_statistics, 'lägenhetskund') 
     create_scatter_plot(ax2, villa_statistics, 'villakund')
     plt.tight_layout()
     plt.show()
 
-lghpriser_file = 'lghpriser.csv'
-villapriser_file = 'villapriser.csv'
+lgh_SE_columns = extract_SE_columns(lghpriser)
+villa_SE_columns = extract_SE_columns(villapriser)
 
-lgh_SE_columns = extract_SE_columns(lghpriser_file)
-villa_SE_columns = extract_SE_columns(villapriser_file)
-
-lghData = read_file(lghpriser_file)
-villaData = read_file(villapriser_file)
-
+# Listor for berakningar som gors i filter_and_print_statistics, som sedan anvands till diagrammen
 lgh_statistics = []
 villa_statistics = []
 
 prisavtal_input = input("Ange prisavtal (R, F1, F3): ").upper()
+
+# Anvands till rubriken i diagrammen
 if prisavtal_input in ["R", "F1", "F3"]:
     if prisavtal_input == "R":
         prisavtal_text = "rörligt avtal"

@@ -17,7 +17,7 @@ villaData = read_file(lghpriser)
 
 print("Innehåll i lghData:")
 for i in range(3):
-    print(lghData[i])		# Skriver ut 3 forsta raderna
+    print(lghData[i])  # Skriver ut 3 forsta raderna
 
 print("\nInnehåll i villaData:")
 for i in range(3):

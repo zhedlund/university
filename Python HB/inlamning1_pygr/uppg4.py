@@ -34,8 +34,8 @@ def generate_year_lists(start_year, end_year, data, column_index):
     		# Generera lista for 2023 m data jan-juli
             year_lists[year] = [
                 float(data[row][column_index['R']]) 
-                for row in range(start_row, end_row + 1)] + [0] * 5  # Months 8-12 set to 0
-            year_lists[year][7] = year_lists[year][6]  # Satt samma data for aug som juli
+                for row in range(start_row, end_row + 1)] + [0] * 5  # Manader 8-12 satts till 0
+            year_lists[year][7] = year_lists[year][6]  # Satt samma data for aug som juli (FF = 0)
         else:
             start_row = (year - 2018) * 12 + 1
             end_row = start_row + 11
@@ -46,7 +46,7 @@ def generate_year_lists(start_year, end_year, data, column_index):
                 ]
     return year_lists
 
-# Funkrtion for att berakna forandringsfaktor
+# Funktion for att berakna forandringsfaktor
 def calculate_change_factors(year_lists):
     change_factors = {}
     for year, values in year_lists.items():
@@ -81,7 +81,7 @@ def plot_change_factor_bar_graph(year_input, area_input, category_text,
     months = ["jan", "feb", "mar", "apr", "may", "jun", "jul", 
               "aug", "sep", "oct", "nov", "dec"]
     category_text = {
-        'V': 'villakund', 'L': 'lagenhetskund'}.get(category_text, category_text)
+        'V': 'villakund', 'L': 'lägenhetskund'}.get(category_text, category_text)
     agreement_input = {
         'R': 'rörligt', 'F1': 'Fast 1 år', 'F3': 'Fast 3 år'}.get(agreement_input, agreement_input)
 
@@ -91,8 +91,6 @@ def plot_change_factor_bar_graph(year_input, area_input, category_text,
     plt.xlabel('månad')
     plt.ylabel('förändring [%]')
     plt.xticks(rotation=90)
-    plt.ylim(-75, 150) 
-    plt.yticks(range(-50, 126, 25))
     plt.tight_layout()
     plt.grid(True)
     plt.legend([f'{agreement_input}'])
