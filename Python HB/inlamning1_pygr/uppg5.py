@@ -47,6 +47,38 @@ def extract_SE_columns(file_name):
             se_columns[column] = [float(row[idx]) for row in data[1:]]
     return se_columns
 
+# Funktion for att hitta minsta varde
+def find_min(prices):
+    min_price = float('inf')
+    for price in prices:
+        if price < min_price:
+            min_price = price
+    return min_price
+
+# Fuktion for att hitta max varde
+def find_max(prices):
+    max_price = float('-inf')
+    for price in prices:
+        if price > max_price:
+            max_price = price
+    return max_price
+
+# Funktion for att hitta medelvarde
+def find_mean(prices):
+    total = sum(prices)
+    mean = total / len(prices)
+    return mean
+
+# Extrahera kolumner startar m SE och namnger listor
+def extract_SE_columns(file_name):
+    data = read_file(file_name)
+    se_columns = {}
+    # Skapar dictionary med SE-kolumner
+    for idx, column in enumerate(data[0]):
+        if column.startswith('SE'):
+            se_columns[column] = [float(row[idx]) for row in data[1:]]
+    return se_columns
+
 def print_header(prisavtal):
     print ("=" * 80, "\n\n")
     print(f"              Lägsta- högsta- och medelvärde av elpriserna")
@@ -87,7 +119,7 @@ def filter_and_print_statistics(se_columns, prisavtal, data, statistics_list):
                 f"SE{se_type}", min_value, min_year, min_month, 
                 max_value, max_year, max_month, mean_value))
 
-# Meta-funktion for att fa diagrammen bredvid varandra
+# Meta-funktion for att fa diagrammen bredvid varandra. Fick inte till det med subplot av nagon anledning, sa detta blev en workaround.
 def create_side_by_side_scatter_plots(lgh_statistics, villa_statistics, prisavtal):
     def create_scatter_plot(ax, statistics, customer_type):
         SE_types = [entry['SE_Type'] for entry in statistics]

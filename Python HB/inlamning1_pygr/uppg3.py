@@ -53,9 +53,10 @@ def find_median(prices):
 def analyze_prices(prices, category, year):
     year_index = 0
     month_index = 1
-    pris_index_rorligt = [4, 7, 10, 13]
+    pris_index_rorligt = [4, 7, 10, 13]  # Satter index for kolumner att ta data fran
     pris_index_fast_3year = [3, 6, 9, 12]
-    
+
+    # Printar analys av elpriserna som tabell
     print(f"              Analys av elpriserna för kategorin {category} år {year}")
     print("          rörligt pris (öre/kWh)                        fast pris 3 år (öre/kWh)")
     print("{:<12}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}{:<10}".format(
@@ -63,6 +64,7 @@ def analyze_prices(prices, category, year):
         "min -- (mån)", "max -- (mån)", "medel", "median"))
     print("-" * 100)
 
+    # Listor for att spara varden for varje prisomrade
     prisomraden = []
     min_variable_prices = []
     max_variable_prices = []
@@ -73,9 +75,11 @@ def analyze_prices(prices, category, year):
     mean_fixed_3year_prices = []
     median_fixed_3year_prices = []
 
+    # Loopar igenom prisomraden SE1-SE4
     for prisomrade in range(1, 5):
         prisomrade_text = f"SE{prisomrade}"
 
+        # Hamtar rorliga- och fast 3-arspriser for varje prisomrade aktuellt ar
         variable_prices = [
             float(entry[pris_index_rorligt[prisomrade - 1]]) for entry in prices 
             if entry[year_index] == str(year)
@@ -84,6 +88,7 @@ def analyze_prices(prices, category, year):
             float(entry[pris_index_fast_3year[prisomrade - 1]]) for entry in prices 
             if entry[year_index] == str(year)
         ]
+        # Beraknar min, max, medel, median for bada priskategorier
         min_variable = find_min(variable_prices)
         max_variable = find_max(variable_prices)
         mean_variable = find_mean(variable_prices)
@@ -93,12 +98,14 @@ def analyze_prices(prices, category, year):
         max_fixed_3year = find_max(fixed_prices_3year)
         mean_fixed_3year = find_mean(fixed_prices_3year)
         median_fixed_3year = find_median(fixed_prices_3year)
-        
+
+        # Hittar manad med min och max pris
         min_month_variable = prices[variable_prices.index(min_variable) + 1][month_index]
         max_month_variable = prices[variable_prices.index(max_variable) + 1][month_index]
         min_month_fixed = prices[fixed_prices_3year.index(min_fixed_3year) + 1][month_index]
         max_month_fixed = prices[fixed_prices_3year.index(max_fixed_3year) + 1][month_index]
 
+        # Lagger till varden till respektive lista for att anvanda i utskrifter senare
         prisomraden.append(prisomrade_text)
         min_variable_prices.append(min_variable)
         max_variable_prices.append(max_variable)
@@ -109,6 +116,7 @@ def analyze_prices(prices, category, year):
         mean_fixed_3year_prices.append(mean_fixed_3year)
         median_fixed_3year_prices.append(median_fixed_3year)
 
+        # Skriver ut beraknade varden for varje prisomrade
         print("{:<12}{:<12}{:<12}{:<10}{:<10}{:<12}{:<12}{:<10}{:<10}".format(
             prisomrade_text,
             f"{min_variable:.2f} {min_month_variable[:3]}", 
@@ -119,13 +127,15 @@ def analyze_prices(prices, category, year):
             f"{mean_fixed_3year:.2f}", f"{median_fixed_3year:.2f}"
 		))
     print("=" * 100)
-	# Plottar bar graph Rorligt pris
+    
+	# Skapar grouped bar graph for Rorligt pris
     bar_width = 0.2
     bar_positions_min = list(range(1, 5))
     bar_positions_max = [pos + bar_width for pos in bar_positions_min]
     bar_positions_mean = [pos + 2 * bar_width for pos in bar_positions_min]
     bar_positions_median = [pos + 3 * bar_width for pos in bar_positions_min]
-    
+
+    # Plottar sjalva figuren
     plt.figure(figsize=(13, 7))
     plt.subplot(1, 2, 1)
     plt.bar(bar_positions_min, min_variable_prices, width=bar_width, label='rörligt min')
@@ -139,12 +149,13 @@ def analyze_prices(prices, category, year):
     plt.ylabel('pris (öre/kWh)')
     plt.legend()
 
-	# Bar graph for Fast pris 3 år
+	# Skapar grouped bar graph for Fast pris 3 år
     bar_positions_min = list(range(1, 5))
     bar_positions_max = [pos + bar_width for pos in bar_positions_min]
     bar_positions_mean = [pos + 2 * bar_width for pos in bar_positions_min]
     bar_positions_median = [pos + 3 * bar_width for pos in bar_positions_min]
-    
+
+    # Plottar figur 2 som subplot sa att de hamnar bredvid varandra
     plt.subplot(1, 2, 2)
     plt.bar(bar_positions_min, min_fixed_3year_prices, width=bar_width, label='fast 3 år - min')
     plt.bar(bar_positions_max, max_fixed_3year_prices, width=bar_width, label='fast 3 år - max')
@@ -159,6 +170,7 @@ def analyze_prices(prices, category, year):
     plt.tight_layout()
     plt.show()
 
+# Tar user input + felhantering
 category_input = input("Lägenhetskund (L) eller villakund (V)? :").upper()
 if category_input not in ['L', 'V']:
     print("Ogiltig kundkategori. Programmet avslutas.")
@@ -185,5 +197,5 @@ else:
     print("Ogiltig kundkategori. Programmet avslutas.")
     exit()
 
-# Analyserar och printar priser
+# Kallar funktion som analyserar och printar priser + diagram
 prisomraden = analyze_prices(prices, category_text, year)
