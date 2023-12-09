@@ -6,14 +6,9 @@
  */
 
 #include <stdio.h>
-
-/* include helper functions for game */
 #include "lifegame.h"
 
 /* add whatever other includes here */
-
-#define WORLDWIDTH 39
-#define WORLDHEIGHT 20
 
 /* number of generations to evolve the world */
 #define NUM_GENERATIONS 50
@@ -40,7 +35,6 @@ int main(void)
 {
 	int n;
 
-	/* TODO: initialize the world by hard-coded function initialize_world() in lifegame.c*/
 	initialize_world();
 	/* evolutions*/
 	for (n = 0; n < NUM_GENERATIONS; n++) {
@@ -49,63 +43,80 @@ int main(void)
 		printf("Press ENTER to continue...\n");
         getchar(); // program pauses, until you press ENTER key to continue
 	}
-	return 0;
+	return (0);
 }
 
+	/* for every cell, set the state in the next
+	   generation according to the Game of Life rules */
 void next_generation(void) 
 {
-	/* for every cell, set the state in the next
-	   generation according to the Game of Life rules
+    int		x;
+	int		y;
+	int		next_state;
 
-	   Hint: use get_next_state(x,y) */
-    int i, j;
-
-    for (i = 0; i < WORLDWIDTH; i++) {
-        for (j = 0; j < WORLDHEIGHT; j++) {
-            int next_state = get_next_state(i, j);
-            set_cell_state(i, j, next_state);
+    for (x = 0; x < get_world_width(); x++) // move to next column
+	{
+        for (y = 0; y < get_world_height(); y++) // move to next row
+		{
+            next_state = get_next_state(x, y); // compute the state in next generation
+            set_cell_state(x, y, next_state); // set the state in next generation
         }
     }
 	finalize_evolution(); /* called at end to finalize */
 }
 
-int get_next_state(int x, int y) {
-    int alive_neighbors = num_neighbors(x, y);
-    if (world[x][y] == ALIVE) {
+/* for the specified cell, compute the state in
+	the next generation using the rules
+
+	   Use num_neighbors(x,y) to compute the number of live
+	   neighbors */
+
+int get_next_state(int x, int y)
+{
+    int alive_neighbors = num_neighbors(x, y); // get the number of live neighbors 
+    
+	if (get_cell_state(x, y) == ALIVE)
+	{
         if (alive_neighbors < 2 || alive_neighbors > 3)
-            return DEAD; // Any live cell with fewer than two live neighbors dies, as if by underpopulation. Or, any live cell with more than three live neighbors dies, as if by overpopulation.
+            return (DEAD); // cell with < 2 or > 3 neighbors dies
         else
-            return ALIVE; // Any live cell with two or three live neighbors lives on to the next generation.
-    } else {
+            return (ALIVE); // cell with 2-3 neighbors lives to next generation
+    }
+	else
+	{
         if (alive_neighbors == 3)
-            return ALIVE; // Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+            return (ALIVE); // dead cell w exactly 3 live neighbors becomes a live cell
         else
-            return DEAD; // All other dead cells remain dead.
+            return (DEAD); // All other dead cells remain dead
     }
 
 }
-	/* TODO: for the specified cell, return the number of
-	   neighbors that are ALIVE
+	/*for the specified cell, return the number of
+	   neighbors that are ALIVE. Using get_cell_state(x,y)
+	   to check state of neighbor cells */
 
-	   Use get_cell_state(x,y) */
+int num_neighbors(int x, int y)
+{
+    int	count = 0;
+    int	i;
+	int	j;
+	int	neighbor_x;
+	int	neighbor_y;
 
-int num_neighbors(int x, int y) {
-    int count = 0;
-    int i, j;
-
-    for (i = -1; i <= 1; i++) {
-        for (j = -1; j <= 1; j++) {
+    for (i = -1; i <= 1; i++) // checks surrounding cells
+	{
+        for (j = -1; j <= 1; j++)
+		{
             if (i == 0 && j == 0)
-                continue; // Skip the current cell itself
+                continue; // Skip the current cell
 
-            int neighbor_x = x + i;
-            int neighbor_y = y + j;
+            neighbor_x = x + i;
+            neighbor_y = y + j;
 
-            if (neighbor_x >= 0 && neighbor_x < WORLDWIDTH && neighbor_y >= 0 && neighbor_y < WORLDHEIGHT) {
-                count += get_cell_state(neighbor_x, neighbor_y); // Use get_cell_state to check the state of the neighbor
-            }
+            if (neighbor_x >= 0 && neighbor_x < get_world_width() && neighbor_y >= 0 && neighbor_y < get_world_height())
+                count += get_cell_state(neighbor_x, neighbor_y); 
         }
     }
-    return count;
+    return (count);
 }
 

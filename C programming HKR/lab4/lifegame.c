@@ -31,8 +31,6 @@ void initialize_world_from_file(const char * filename) {
 	/* TODO: read the state of the world from a file with
 	   name "filename".  the live cells are given by pairs of rows and columns.
 	 */
-
-
 }
 
 void save_world_to_file(const char * filename) {
@@ -43,8 +41,6 @@ void save_world_to_file(const char * filename) {
 	   This file should be readable using the function
 	   initialize_world_from_file(filename) above
 	 */
-
-
 }
 
 /* you shouldn't need to edit anything below this line */
