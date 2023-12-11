@@ -1,34 +1,34 @@
 function convertTemperature(temperature, fromUnit, toUnit) {
 	let result;
   
-	if (fromUnit === 'Celsius') {
-	  if (toUnit === 'Fahrenheit') {
+	if (fromUnit === 'C') {
+	  if (toUnit === 'F') {
 		result = (temperature * 9/5) + 32;
-	  } else if (toUnit === 'Kelvin') {
+	  } else if (toUnit === 'K') {
 		result = temperature + 273.15;
 	  } else {
-		result = temperature;
+	  	result = temperature;
 	  }
-	} else if (fromUnit === 'Fahrenheit') {
-	  if (toUnit === 'Celsius') {
+	} else if (fromUnit === 'F') {
+	  if (toUnit === 'C') {
 		result = (temperature - 32) * 5/9;
-	  } else if (toUnit === 'Kelvin') {
+	  } else if (toUnit === 'K') {
 		result = (temperature - 32) * 5/9 + 273.15;
 	  } else {
 		result = temperature;
-	  }
-	} else if (fromUnit === 'Kelvin') {
-	  if (toUnit === 'Celsius') {
+	}
+	} else if (fromUnit === 'K') {
+	  if (toUnit === 'C') {
 		result = temperature - 273.15;
-	  } else if (toUnit === 'Fahrenheit') {
+	  } else if (toUnit === 'F') {
 		result = (temperature - 273.15) * 9/5 + 32;
 	  } else {
 		result = temperature;
 	  }
-	} else {
-	  result = temperature;
 	}
-  
-	return result;
+	return (result * 100) / 100;
   }
   
+  module.exports = {
+	convertTemperature
+  };
