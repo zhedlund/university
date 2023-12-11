@@ -1,0 +1,14 @@
+{
+  "name": "tempconverter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "temp.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "*"
+  }
+}
