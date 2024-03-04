@@ -1,0 +1,15 @@
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/bin/Debug/net8.0/uppgift1
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/bin/Debug/net8.0/uppgift1.deps.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/bin/Debug/net8.0/uppgift1.runtimeconfig.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/bin/Debug/net8.0/uppgift1.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/bin/Debug/net8.0/uppgift1.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.AssemblyInfoInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.AssemblyInfo.cs
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.csproj.CoreCompileInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.sourcelink.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/refint/uppgift1.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/uppgift1.genruntimeconfig.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/uppgift1/obj/Debug/net8.0/ref/uppgift1.dll

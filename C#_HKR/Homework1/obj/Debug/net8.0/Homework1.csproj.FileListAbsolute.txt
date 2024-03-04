@@ -1,0 +1,15 @@
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/bin/Debug/net8.0/Homework1
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/bin/Debug/net8.0/Homework1.deps.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/bin/Debug/net8.0/Homework1.runtimeconfig.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/bin/Debug/net8.0/Homework1.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/bin/Debug/net8.0/Homework1.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.AssemblyInfoInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.AssemblyInfo.cs
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.csproj.CoreCompileInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.sourcelink.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/refint/Homework1.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/Homework1.genruntimeconfig.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_HKR/Homework1/obj/Debug/net8.0/ref/Homework1.dll
