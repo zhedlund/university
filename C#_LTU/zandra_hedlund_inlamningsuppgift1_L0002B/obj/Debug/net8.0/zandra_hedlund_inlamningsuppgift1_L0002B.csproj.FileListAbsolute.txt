@@ -1,0 +1,15 @@
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/bin/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/bin/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.deps.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/bin/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.runtimeconfig.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/bin/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/bin/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.AssemblyInfoInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.AssemblyInfo.cs
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.csproj.CoreCompileInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.sourcelink.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/refint/zandra_hedlund_inlamningsuppgift1_L0002B.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/zandra_hedlund_inlamningsuppgift1_L0002B.genruntimeconfig.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/zandra_hedlund_inlamningsuppgift1_L0002B/obj/Debug/net8.0/ref/zandra_hedlund_inlamningsuppgift1_L0002B.dll

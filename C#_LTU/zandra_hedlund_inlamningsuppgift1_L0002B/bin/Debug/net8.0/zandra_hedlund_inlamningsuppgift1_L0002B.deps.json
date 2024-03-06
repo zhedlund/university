@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "zandra_hedlund_inlamningsuppgift1_L0002B/1.0.0": {
+        "runtime": {
+          "zandra_hedlund_inlamningsuppgift1_L0002B.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "zandra_hedlund_inlamningsuppgift1_L0002B/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
