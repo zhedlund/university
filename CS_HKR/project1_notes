@@ -1,0 +1,61 @@
+Python implementation of a toy symmetric cryptosystem and a brute-force decryption attack
+
+the program implements a toy symmetric cryptosystem based on the method described. Here's a breakdown:
+
+    Key Generation (generate_random_key): This function generates a random 16-bit key.
+
+    Encryption (encrypt): The encryption function takes a message and a key as input. It XORs each character of the message with the key to generate the ciphertext. The key is repeated to match the length of the message before the XOR operation.
+
+    Decryption (decrypt): Similar to encryption, the decryption function takes the ciphertext and the key as input. It XORs each character of the ciphertext with the key to retrieve the original message.
+
+    Main Function (main): In the main function, a message is provided, and a random key is generated. The message is then encrypted using the generated key. After encryption, the ciphertext is decrypted using the same key, and the original message is printed along with the encrypted and decrypted messages.
+
+This cryptosystem follows the process described in the problem statement, utilizing XOR operations with repetition of the key to encrypt and decrypt messages. However, it's important to note that this method has limitations and may not provide strong security for real-world applications.
+
+
+
+
+The encryption of a message MM of length nn (in bytes) is given by EK(M)=M⊕(K∣∣K∣∣… )EK​(M)=M⊕(K∣∣K∣∣…), where ⊕⊕ denotes the bitwise XOR operation, and KK is repeated n/2n/2 times to match the length of the message MM.
+
+The decryption algorithm for a ciphertext CC is the same as the encryption algorithm: DK(C)=C⊕(K∣∣K∣∣… )DK​(C)=C⊕(K∣∣K∣∣…), where ⊕⊕ denotes the bitwise XOR operation, and KK is repeated as many times as necessary to match the length of the ciphertext CC.
+
+
+
+
+using a list of English words from the /usr/share/dict/words file (or any similar English word list), and you are randomly selecting words from that list to generate test strings, then the process is already automated to some extent.
+
+By generating test strings from a known list of English words, you are ensuring that the strings are valid English text. However, keep in mind that these test strings may not represent natural language sentences, as they are merely combinations of randomly selected words.
+
+To further automate the process of detecting whether a decrypted message is English, you can compare the decrypted message against the list of English words and check if it contains valid English words. This can provide additional validation that the decrypted message is in English.
+
+
+
+Original Message: pensioning idealism recklessly arabesques Ptolemies 
+Encrypted Message: )ë7ý0á7ç7éyç=ë8â0ý4®+ë:å5ë*ý5÷yï+ï;ë*ÿ,ë*®	ú6â<ã0ë*®
+Decrypted Message (Original): pensioning idealism recklessly arabesques Ptolemies 
+Decrypted Message (Brute-force): pensioning idealism recklessly arabesques Ptolemies 
+Brute-force Decryption Key: 22926
+Brute-force decryption successful
+
+Original Message: choosing ended Ahmed's sodium sandlots
+Encrypted Message: sKLcJ~D0F~GuG0bxNuG7P0PGyV}cB~G|LdP
+Decrypted Message (Original): choosing ended Ahmed's sodium sandlots
+Decrypted Message (Brute-force): None
+Brute-force Decryption Key: None
+Brute-force decryption failed
+
+
+Original Message: funereal sewn Twizzlers sylph briefings 
+Encrypted Message: ;Þ3Î/Î<Ç}Ø8Ü3	Ü4Ñ'Ç8Ù..Ò1Û5?Ù4Î;Â3Ì.
+Decrypted Message (Original): funereal sewn Twizzlers sylph briefings 
+Decrypted Message (Brute-force): funereal sewn Twizzlers sylph briefings 
+Brute-force Decryption Key: 23979
+Brute-force Decryption successful
+
+Original Message: belt's quickened characterizations expository irritated 
+Encrypted Message: ÏÞÁÏÈÊØÒÎÐÈÕÈßØÅÚßÚÎÏÈÉÄÁÌÏÄÔÃÈÞÕËÂÈÄÏÂÉÔÄÉßÒÙÚÙÞÉ
+Decrypted Message (Original): belt's quickened characterizations expository irritated 
+Decrypted Message (Brute-force): None
+Brute-force Decryption Key: None
+Brute-force Decryption failed
+
