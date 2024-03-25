@@ -1,0 +1,15 @@
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/bin/Debug/net8.0/uppg2
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/bin/Debug/net8.0/uppg2.deps.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/bin/Debug/net8.0/uppg2.runtimeconfig.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/bin/Debug/net8.0/uppg2.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/bin/Debug/net8.0/uppg2.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.GeneratedMSBuildEditorConfig.editorconfig
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.AssemblyInfoInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.AssemblyInfo.cs
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.csproj.CoreCompileInputs.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.sourcelink.json
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/refint/uppg2.dll
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.pdb
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/uppg2.genruntimeconfig.cache
+/Users/zandrahedlund/Documents/GitHub/university/C#_LTU/inlamningsuppg2/uppg2/obj/Debug/net8.0/ref/uppg2.dll

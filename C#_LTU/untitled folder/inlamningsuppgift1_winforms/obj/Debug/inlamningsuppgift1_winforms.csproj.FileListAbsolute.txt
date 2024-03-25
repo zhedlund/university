@@ -1,0 +1,11 @@
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\bin\Debug\inlamningsuppgift1_winforms.exe.config
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\bin\Debug\inlamningsuppgift1_winforms.exe
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\bin\Debug\inlamningsuppgift1_winforms.pdb
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.csproj.AssemblyReference.cache
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.csproj.SuggestedBindingRedirects.cache
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.Form1.resources
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.Properties.Resources.resources
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.csproj.GenerateResource.cache
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.csproj.CoreCompileInputs.cache
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.exe
+C:\Users\zanhed-3\source\repos\inlamningsuppgift1_winforms\obj\Debug\inlamningsuppgift1_winforms.pdb

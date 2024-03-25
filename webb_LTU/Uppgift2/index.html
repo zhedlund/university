@@ -2,6 +2,7 @@
 <html lang="sv">
 <head>
     <meta charset="utf-8">
+    <!--1. Ger sidan en titel-->
     <title>Presentation</title>
     <!--CSS för att formattera sidan-->
     <style>
@@ -36,10 +37,10 @@
     </style>
 </head>
 <body>
-    <!--Tabell-->
+    <!--8. Skapar en tabell. tr står för table row och definierar en rad. td står för table data och definierar en cell -->
     <table>
         <tr>
-            <!--Rubrik med bakgrundsbild-->
+            <!--2. H står för heading och siffran anger rubrikordning, där H1 är huvudrubrik, H2 underrubrik osv -->
             <td colspan="2" class="cell-with-background">
                 <h1>Zandra H</h1>
                 <h2>Content Creator & Social Media Manager</h2>
@@ -49,18 +50,27 @@
         <!--Cell med brödtext-->
         <tr>
             <td colspan="2">
+                <!--3. Definierar en paragraf med text-->
             <p>
                 Jag heter Zandra och är baserad i Berlin, där jag navigerar tysk byråkrati och 
                 livet i allmänhet. Mitt yrkesliv kretsar kring att skapa content och 
                 hantera sociala media-flöden.
             </p>    
+            <!--4. a används för att infoga länkar-->
             <p>
                 Jag älskar att lära mig nya saker och just nu försöker jag lära mig att kommunicera med datorer.
                 Jag studerar mjukvaruutveckling vid <a href="https://42berlin.de/" target="_blank">42 Berlin</a> och läser 
                 samtidigt distanskurser i programmering, webbutveckling och computer security vid universitet i Sverige. 
-                Att förstå koden bakom digitala lösningar fascinerar mig, och jag strävar ständigt efter att uppdatera mitt skillset. 
-                Det finns oändligt mycket att lära sig inom detta område och det är utmanande på helt rätt sätt. 
+                Att förstå koden bakom digitala lösningar fascinerar mig och jag strävar ständigt efter att uppdatera 
+                mitt skillset. Det finns oändligt mycket att lära sig inom detta område och det är utmanande på helt rätt sätt. 
                 Att kunna programmera öppnar upp så många möjligheter.
+            </p>
+            <p>
+                Jag lärde mig HTML, CSS och lite Javascript när jag var 16 år, genom att läsa källkoden på hemsidor och 
+                lista ut hur det fungerar. Jag byggde en del hemsidor då, men sedan hände Livet och jag blev aldrig 
+                någon webbdesigner. Läste några poäng webbdesign inom ramen för en kurs i mediateknik 2015, men det var senast
+                jag gjorde någonting frontend. Mycket har hänt med webbutveckling sedan dess, så jag behöver fräscha upp kunskaperna. 
+                Därför går jag den här kursen.
             </p>
             <p>
                 Ursprungligen kommer jag från Stockholm, men den mångfaldiga kulturen i Berlin är svårslagen
@@ -74,9 +84,10 @@
             </td>
         </tr>
         <!--Celler med rubrik till listorna i cellerna nedanför-->
+        <!--6. strong gör texten till fetstil-->
         <tr>
-            <th class="left">Programmeringsspråk</th>
-            <th class="left">Lär dig koda</th>
+            <td class="left"><strong>Programmeringsspråk</strong></td>
+            <td class="left"><strong>Lär dig koda</strong></td>
         </tr>
         <!--Två celler med listor-->
         <tr>
@@ -89,8 +100,8 @@
                     <li>Javascript</li>
                 </ul>
             </td>
-            <!--Lista med länkar-->
             <td>
+                <!--9. Onumrerad lista, här med länkar-->
                 <ul>
                     <li><a href="https://leetcode.com/" target="_blank">LeetCode</a></li>
                     <li><a href="https://www.w3schools.com/" target="_blank">W3Schools</a></li>
@@ -103,7 +114,8 @@
         <!--Ikoner med länkar-->
         <tr>
             <td colspan="2" class="padding">
-                <a href="github.com/zhedlund" target="_blank">
+                <a href="http://github.com/zhedlund" target="_blank">
+                    <!--5. img står för image, används för att infoga en bild-->
                     <img src="github-mark.png" alt="GitHub" width="40" height="40" style="margin-right: 10px;"></a>
                 <a href="https://www.linkedin.com/in/zandra-hedlund/" target="_blank">
                     <img src="linkedin_logo.png" alt="LinkedIn" width="40" height="40" style="margin-right: 10px;"></a>
@@ -117,6 +129,7 @@
         </tr>
         <!--Länk till analyssidan-->
         <tr>
+            <!--7. em gör texten kursiv-->
             <th colspan="2" class="left">
                 <a href="analys.html"><strong><em>Analys</em></strong></a></th>
         </tr>
