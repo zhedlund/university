@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blomstermålabladet Formulär</title>
+</head>
+<body>
+
+<h1>Blomstermålabladet</h1>
+<!-- Anger adressen dit svaren ska skickas, med metod GET -->
+<form action="http://webshare.mah.se/tszagh/response.php" method="GET">
+
+    <!-- Formulär för kontaktuppgifter -->
+    <fieldset>
+        <legend>Kontaktuppgifter</legend>
+        <!-- Textfält för namn, obligatoriskt. Endast bokstäver + mellanslag tillåtna -->
+        <label for="namn">Namn:</label>
+        <input type="text" id="namn" name="namn" placeholder="Namn" pattern="[A-Za-zÅÄÖåäö ]+" title="Endast bokstäver tillåtna" required><br><br>
+        <!-- Textfält för ålder, endast siffror tillåtna -->
+        <label for="ålder">Ålder:</label>
+        <input type="number" id="ålder" name="ålder" title="Endast siffror tillåtna" placeholder="Ålder" required><br><br>
+    </fieldset>
+    <!-- Flervalsalternativ med radioknappar -->
+    <fieldset>
+        <legend>Dina besök på Blomstermålabladet</legend>
+        <label>Hur ofta besöker du Blomstermålabladet?</label><br>
+        <input type="radio" id="dagligen" name="besök" value="Varje dag" required>
+        <label for="dagligen">Varje dag</label><br>
+        <input type="radio" id="varannandag" name="besök" value="Varannan dag" required>
+        <label for="varannandag">Varannan dag</label><br>
+        <input type="radio" id="varjevecka" name="besök" value="Varje vecka" required>
+        <label for="varjevecka">Varje vecka</label><br><br>
+
+        <!-- Checkrutor, "[]" anger att det är flera checkbox-fält med samma namn, så att alla värden kan samlas i en array i backend-skriptet -->
+        <label>Vilka delar av Blomstermålabladet brukar du besöka?</label><br>
+        <input type="checkbox" id="nyheter" name="delar[]" value="Nyheter">
+        <label for="nyheter">Nyheter</label><br>
+        <input type="checkbox" id="utrikes" name="delar[]" value="Utrikes">
+        <label for="utrikes">Utrikes</label><br>
+        <input type="checkbox" id="inrikes" name="delar[]" value="Inrikes">
+        <label for="inrikes">Inrikes</label><br>
+        <input type="checkbox" id="sport" name="delar[]" value="Sport">
+        <label for="sport">Sport</label><br>
+        <input type="checkbox" id="skvaller" name="delar[]" value="Skvaller">
+        <label for="skvaller">Skvaller</label><br>
+        <input type="checkbox" id="väder" name="delar[]" value="Väder">
+        <label for="väder">Väder</label><br>
+        <input type="checkbox" id="övrigt" name="delar[]" value="Övrigt">
+        <label for="övrigt">Övrigt</label><br><br>
+    </fieldset>
+
+    <!-- Formulär med textfält för att ange det bästa/sämsta med Blomstermålabladet -->
+    <fieldset>
+        <legend>Vinn en T-shirt!</legend>
+        <label for="bästa">Bästa med Blomstermålabladet:</label><br>
+        <input type="text" id="bästa" name="bästa"><br><br>
+        
+        <label for="sämsta">Sämsta med Blomstermålabladet:</label><br>
+        <input type="text" id="sämsta" name="sämsta"><br><br>
+        
+        <!-- Textfält för att ange e-postadress, validering av korrekt e-postformat -->
+        <label for="epost">Epost:</label><br>
+        <input type="email" id="epost" name="epost" title="Ange en korrekt e-postadress" placeholder="t ex. namn@mah.se" required><br><br>
+
+        <!-- Dropdown-meny för att välja storlek, "M" är förvalt -->
+        <label for="storlek">Storlek:</label><br>
+        <select id="storlek" name="storlek">
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M" selected>M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+        </select><br><br>
+    </fieldset>
+
+    <!-- Knappar för skicka/återställ -->
+    <fieldset>
+        <legend>Skicka/återställ</legend>
+        <input type="submit" value="Skicka">
+        <input type="reset" value="Återställ">
+    </fieldset>
+
+</form>
+
+</body>
+</html>

@@ -32,7 +32,8 @@ def decrypt(ciphertext, key):
 
 # Function to generate random English text messages
 def generate_random_english_message(word_list, num_words):
-    selected_words = random.sample(word_list, num_words)
+    filtered_words = [word for word in word_list if word.isalpha()]
+    selected_words = random.sample(filtered_words, num_words)
     return ' '.join(selected_words)
 
 # Brute-force decryption attack
@@ -45,14 +46,12 @@ def brute_force_decrypt(ciphertext):
 
 # Function to determine if text is English
 def is_english(text):
-    # Define a set of English characters
-    english_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.!?")
-    
-    # Check if all characters in the text are English characters
-    for char in text:
-        if char not in english_chars:
-            return False
-    return True
+   english_chars = set("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ")
+   for char in text:
+       if char not in english_chars:
+           return False
+   return True
+
 
 # Test the cryptosystem
 def main():
@@ -74,8 +73,8 @@ def main():
     brute_decrypted, brute_key = brute_force_decrypt(ciphertext)
     print("Decrypted Message (Brute-force):", brute_decrypted)
     print("Brute-force Decryption Key:", brute_key)
-    if decrypted == brute_decrypted:
-	    print("Brute-force Decryption successful")
+    if decrypted.lower() == brute_decrypted.lower():
+        print("Brute-force Decryption successful")
     else:
 	    print("Brute-force Decryption failed")
 
