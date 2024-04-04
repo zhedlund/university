@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Supportformulär</title>
+</head>
+<body>
+
+<h2>Supportformulär</h2>
+<p>Här kan du skicka ett ärende till vår supportavdelning.</p>
+<!-- Start av formulär -->
+<form method="POST" action="https://staff.www.ltu.se/~susfah/uppgift3b/parse_form.php">
+    <!-- Fält för att ange namn, måste fyllas i -->
+    <div>
+      <label for="namn">Ditt namn:</label><br>
+      <input type="text" id="namn" name="namn" required><br><br>
+    </div>
+    <!-- Fält för att ange telnr, måste fyllas i -->
+    <div>
+      <label for="telefon">Telefon:</label><br>
+      <input type="tel" id="telefon" name="telefon" required><br><br>
+    </div>
+    <!-- Drop down-meny för ärendets prioritet, måste väljas -->
+    <div>
+      <label for="prioritet">Prioritet:</label><br>
+      <select id="prioritet" name="prioritet" required>
+        <option value="">Välj alternativ</option>
+        <option value="1">Låg</option>
+        <option value="2">Normal</option>
+        <option value="3">Hög</option>
+      </select><br><br>
+    </div>
+    <!-- Radioknappar för att välja ort att tilldela ärendet, måste väljas -->
+    <div>
+        <label>Tilldela till ort:</label><br>
+        <input type="radio" id="gbg" name="ort" value="gbg" required>
+        <label for="gbg">Göteborg</label><br>
+        <input type="radio" id="sthlm" name="ort" value="sthlm">
+        <label for="sthlm">Stockholm</label><br>
+        <input type="radio" id="ume" name="ort" value="ume">
+        <label for="ume">Umeå</label><br>
+        <input type="radio" id="lule" name="ort" value="lule">
+        <label for="lule">Luleå</label><br><br>
+    </div>
+    <!-- Drop down-meny för ärendets kategori, måste väljas -->
+    <div>
+      <label for="kategori">Kategorin:</label><br>
+      <select id="kategori" name="kategori" required>
+        <option value="">Välj alternativ</option>
+        <option value="fakt">Fakturering</option>
+        <option value="net">Internet</option>
+        <option value="tel">Telefoni</option>
+        <option value="epost">E-post</option>
+      </select><br><br>
+    </div>
+    <!-- Fält för att ange ärendets rubrik, måste fyllas i -->
+    <div>
+        <label>Tilldela till ort:</label><br>
+      <input type="text" id="rubrik" name="rubrik" required><br><br>
+    </div>
+    <!-- Textruta för att eskriva ärendet, måste fyllas i -->
+    <div>
+      <label for="beskrivning">Beskrivning:</label><br>
+      <textarea id="beskrivning" name="beskrivning" rows="4" required></textarea><br><br>
+    </div>
+    <!-- Knappar för att skicka in eller återställa formuläret -->
+    <div>
+      <input type="submit" name="skicka" value="Submit">
+      <input type="reset" value="Reset">
+    </div>
+  </form> 
+  </body>
+  </html>

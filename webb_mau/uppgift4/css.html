@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>CSS</title>
+</head>
+<!-- Bakgrundsfärg m inline-style -->
+<body style="background-color: lightblue;">
+    <div style="background-color: black; color: white; text-align: center;">
+		<h1 style="font-size: 32px; text-align: center;">Meny</h1>
+		  <a href="index.html" style="color: white;">Författare</a><br>
+		  <a href="css.html" style="color: white;">CSS</a><br>
+		  <a href="dokument.html" style="color: white;">Dokument</a><br><br>
+	</div>
+	<header>
+        <!-- H1 inline style med Arial, bakgrundsfärg, centrerad, textfärg, ingen text-decoration -->
+		<h1 style="font-family: Arial; text-align: center; background-color: darkblue; color: lightgrey; text-decoration: none;
+        ">Vad är CSS?</h1>
+	</header>
+    <p>CSS, eller Cascading Style Sheets, är ett stilmallspråk som används för att beskriva presentationen av en webbsida, 
+        inklusive dess layout, färger, typsnitt och andra visuella egenskaper. CSS separerar innehållet (HTML) från presentationen, 
+        vilket gör det möjligt att styra utseendet på webbsidor på ett mer strukturerat och effektivt sätt.</p>
+        <!-- H2 inline style med Arial, font-size 24px, ram + centrerad -->
+        <h2 style="font-family: Arial; font-size: 24px; font-weight: normal; border: 2px solid darkblue; padding: 10px; text-align: center;">Varför finns CSS?</h2>
+        <p>CSS finns till för att ge webbutvecklare en kraftfull och flexibel metod för att designa och styra utseendet på 
+            webbsidor. Genom att separera innehållet från presentationen kan webbutvecklare enkelt ändra utseendet på en 
+            webbplats genom att bara ändra stilarna i en CSS-fil, vilket gör det möjligt att skapa mer enhetliga och attraktiva 
+            webbupplevelser för användarna.
+        </p>
+        <h2 style="font-family: Arial; font-size: 24px; font-weight: normal; border: 2px solid darkblue; padding: 10px; text-align: center;">Hur använder vi oss av CSS?</h2>
+        <!-- "&lt;" och "&gt;" är HTML-kod för '<' resp '>', så att det tolkas som vanlig text -->
+        <p>Vi använder CSS genom att skriva stilregler som specificerar olika visuella egenskaper för HTML-elementen på en 
+            webbsida. Dessa stilregler kan sedan inkluderas i en separat CSS-fil och länkas till HTML-dokumentet med hjälp 
+            av &lt;link&gt;-elementet, eller så kan de inkluderas direkt i HTML-dokumentet med hjälp av &lt;style&gt;-elementet eller 
+            inline-styling.</p>
+        <h2 style="font-family: Arial; font-size: 24px; font-weight: normal; border: 2px solid darkblue; padding: 10px; text-align: center;">Det finns olika versioner av CSS:</h2>
+        <ul>
+            <li>CSS1 (första versionen)</li>
+            <li>CSS2 (andra versionen, delad upp i moduler)</li>
+            <li>CSS2.1 (en reviderad och stabiliserad version av CSS2)</li>
+            <li>CSS3 (den senaste versionen, uppdelad i moduler)</li>
+        </ul>
+        <h2 style="font-family: Arial; font-size: 24px; font-weight: normal; border: 2px solid darkblue; padding: 10px; text-align: center;">Varför finns det olika versioner? (Varför är det inte bara en?)</h2>
+        <p>CSS har utvecklats och förbättrats över tiden för att möta nya behov och krav från webbutvecklingsgemenskapen. 
+            Varje ny version av CSS har introducerat nya funktioner, förbättringar och korrigeringar av tidigare brister 
+            för att göra det enklare och mer kraftfullt att designa webbsidor.</p>
+        <h2 style="font-family: Arial; font-size: 24px; font-weight: normal; border: 2px solid darkblue; padding: 10px; text-align: center;">Varför är det viktigt att veta vilken version som en viss CSS-egenskap tillhör? (Kan detta påverka webbplatsen?)</h2>
+        <p>Det är viktigt att veta vilken version av CSS en viss egenskap tillhör eftersom olika webbläsare kan ha olika 
+            stöd för CSS-egenskaper beroende på vilken version av CSS de implementerar. Om en webbläsare inte stöder en 
+            viss CSS-egenskap kan detta påverka hur en webbsida visas för användarna. Genom att förstå vilken version av 
+            CSS en egenskap tillhör kan webbutvecklare göra mer informerade beslut om vilka funktioner de kan använda på 
+            sin webbplats och hur de ska implementera dem för att säkerställa en konsistent och tillförlitlig användarupplevelse 
+            över olika webbläsare och enheter.</p>
+</body>
+</html>
